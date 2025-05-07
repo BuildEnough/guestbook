@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>글 작성</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>글 작성</h1>
+
+<form action="/save" method="post" th:object="${entry}">
+    <p>이름: <input type="text" th:field="*{name}" required /></p>
+    <p>비밀번호: <input type="password" th:field="*{password}" required /></p>
+    <p>내용: <textarea th:field="*{content}" required></textarea></p>
+    <button type="submit">등록</button>
+</form>
+
+<p><a href="/">목록으로</a></p>
+
+</body>
+</html>

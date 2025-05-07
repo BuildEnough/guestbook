@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>방명록</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<h1>방명록</h1>
+
+<p><a href="/form">글 쓰기</a></p>
+
+<!-- 오류 메시지 출력 -->
+<p th:if="${error}" th:text="${error}" style="color: red;"></p>
+
+<!-- 글 목록 -->
+<table border="1">
+    <tr>
+        <th>이름</th>
+        <th>내용</th>
+        <th>작성일</th>
+        <th>삭제</th>
+    </tr>
+    <tr th:each="entry : ${entries}">
+        <td th:text="${entry.name}">이름</td>
+        <td th:text="${entry.content}">내용</td>
+        <td th:text="${entry.createdAt}">날짜</td>
+        <td>
+            <form method="post" action="/delete">
+                <input type="hidden" name="id" th:value="${entry.id}" />
+                <input type="password" name="password" placeholder="비밀번호" required />
+                <button type="submit">삭제</button>
+            </form>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
